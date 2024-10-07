@@ -1,13 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Actividad Aulica 11</title>
     <link href="css/style.css" rel="stylesheet" />
     <script src="js/script.js"></script>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body onload="mostrarCargaPagina()">
+    <!--Eventos onLoad-->
+    <script>
+      function mostrarCargaPagina() {
+        alert("La página se cargó");
+      }
+    </script>
+    <!--Formularios y Eventos-->
+    <script>
+      function mostrarMensajeBoton(numero) {
+        alert("Se presionó el botón " + numero);
+      }
+    </script>
+    <form>
+      <button type="button" onclick="mostrarMensajeBoton(1)">1</button>
+      <button type="button" onclick="mostrarMensajeBoton(2)">2</button>
+      <button type="button" onclick="mostrarMensajeBoton(3)">3</button>
+    </form>
+    <br />
+    <!--Controles FORM, BUTTON y TEXT.-->
+    <!-- 1. -->
+    <script>
+      function calcularCuboInput() {
+        numero = parseInt(document.getElementById("alCubo").value);
+        let cubo = Math.pow(numero, 3);
+        alert(cubo);
+      }
+    </script>
+    <form>
+      <input type="text" id="alCubo" />
+      <input
+        type="button"
+        onclick="calcularCuboInput()"
+        value="Calcular el cubo"
+      />
+    </form>
+    <!-- 2. -->
+    <script>
+      function calcularMayorInput() {
+        numero1 = parseInt(document.getElementById("numero1").value);
+        numero2 = parseInt(document.getElementById("numero2").value);
+        mayor = numero1 > numero2 ? numero1 : numero2;
+        alert(`El mayor es ${mayor}`);
+      }
+    </script>
+    <form>
+      <input type="text" id="numero1" />
+      <input type="text" id="numero2" />
+      <input
+        type="button"
+        onclick="calcularMayorInput()"
+        value="Calcular Mayor"
+      />
+    </form>
+    <!-- 3. -->
+    <script>
+      function concatenarNombreApellido() {
+        nombre = document.getElementById("nombre").value;
+        apellido = document.getElementById("apellido").value;
+        document.getElementById("nombreApellido").value =
+          nombre + " " + apellido;
+      }
+    </script>
+    <form>
+      <input type="text" id="nombre" />
+      <input type="text" id="apellido" />
+      <input
+        type="button"
+        onclick="concatenarNombreApellido()"
+        value="Concatenar Nombres"
+      />
+      <input type="text" id="nombreApellido" />
+    </form>
+    <!--Control PASSWORD-->
+    <script>
+      function verificarContraseñas() {
+        password1 = document.getElementById("password1").value;
+        password2 = document.getElementById("password2").value;
+        if (password1 === password2) alert("Las contraseñas son iguales");
+        else alert("Las contraseñas son distintas");
+      }
+    </script>
+    <form>
+      <input type="password" id="password1" />
+      <input type="password" id="password2" />
+      <input
+        type="button"
+        onclick="verificarContraseñas()"
+        value="Comparar Contraseñas"
+      />
+    </form>
+    <!--Control SELECT-->
+    <!--1.-->
+    <script>
+      function mostrarValorPizza() {
+        selectPizza = document.getElementById("selectPizza");
+        document.getElementById("valorPizza").value =
+          selectPizza[selectPizza.selectedIndex].value;
+      }
+    </script>
+    <select id="selectPizza" onChange="mostrarValorPizza()">
+      <option value="15312">Jamón y Queso</option>
+      <option value="25121">Muzzarella</option>
+      <option value="15548">Morrones</option>
+    </select>
+    <input type="text" id="valorPizza" />
+    <br />
+    <!--2.-->
+    <script>
+      function calcularPresupuestoEquipo() {
+        selectProcesador = document.getElementById("selectProcesador");
+        valorProcesador = parseInt(
+          selectProcesador[selectProcesador.selectedIndex].value
+        );
+        selectMonitor = document.getElementById("selectMonitor");
+        valorMonitor = parseInt(
+          selectMonitor[selectMonitor.selectedIndex].value
+        );
+        selectDiscoDuro = document.getElementById("selectDiscoDuro");
+        valorDiscoDuro = parseInt(
+          selectDiscoDuro[selectDiscoDuro.selectedIndex].value
+        );
+        document.getElementById("costoEquipo").value =
+          valorProcesador + valorMonitor + valorDiscoDuro;
+      }
+    </script>
+    <select id="selectProcesador">
+      <option value="400">Intel I3</option>
+      <option value="600">Intel I5</option>
+      <option value="800">Intel I7</option>
+    </select>
+    <select id="selectMonitor">
+      <option value="250">Samsung 20'</option>
+      <option value="350">Samsung 22'</option>
+      <option value="550">Samsung 26'</option>
+    </select>
+    <select id="selectDiscoDuro">
+      <option value="300">500 Gb</option>
+      <option value="440">1 Tb</option>
+      <option value="500">3 Tb</option>
+    </select>
+    <input
+      type="button"
+      onclick="calcularPresupuestoEquipo()"
+      value="Calcular"
+    />
+    <input type="text" id="costoEquipo" />
+    <br />
+    <!--2.-->
+    <script>
+      function calcularPrecioPizza() {
+        selectPizza = document.getElementById("selectPizza2");
+        valorPizza = parseInt(selectPizza[selectPizza.selectedIndex].value);
+        unidadesInput = document.getElementById("unidadesPizza");
+        unidadesPizza = parseInt(unidadesInput.value);
+        document.getElementById("cantidadAbonarPizza").value =
+          valorPizza * unidadesPizza;
+      }
+    </script>
+    <select id="selectPizza2">
+      <option value="4">Queso</option>
+      <option value="6">Jamón y Queso</option>
+      <option value="10">Especial</option>
+    </select>
+    <input type="text" id="unidadesPizza" />
+    <input type="button" onclick="calcularPrecioPizza()" value="Calcular" />
+    <input type="text" id="cantidadAbonarPizza" />
+    <!--Control CHECKBOX-->
+    <script>
+      function mostrarDeporte() {
+        let deportes = "";
+        if (document.getElementById("checkbox1").checked) {
+          deportes += "Fútbol ";
+        }
+        if (document.getElementById("checkbox2").checked) {
+          deportes += "Básquet ";
+        }
+        if (document.getElementById("checkbox3").checked) {
+          deportes += "Tenis";
+        }
+        alert(`Los deportes seleccionados son: ${deportes}`);
+      }
+    </script>
+    <form>
+      <input type="checkbox" id="checkbox1" />Fútbol<br />
+      <input type="checkbox" id="checkbox2" />Básquet<br />
+      <input type="checkbox" id="checkbox3" />Tenis<br />
+      <input
+        type="button"
+        value="Mostrar Deportes"
+        onClick="mostrarDeporte()"
+      />
+    </form>
+    <!--Control RADIO-->
+    <script>
+      function mostrarSiPuedeIngresar() {
+        if (document.getElementById("radio1").checked) {
+          alert("Puede ingresar al sitio");
+        } else {
+          alert("No puede ingresar al sitio");
+        }
+      }
+    </script>
+    <form>
+      <p>¿Es mayor de 18 años?</p>
+      <input type="radio" id="radio1" name="edad" checked />Sí<br />
+      <input type="radio" id="radio2" name="edad" />No<br />
+      <input
+        type="button"
+        value="¿Puede ingresar al sitio?"
+        onClick="mostrarSiPuedeIngresar()"
+      />
+    </form>
+    <br />
+    <!--Control TEXTAREA-->
+    <script>
+      function mostrarDatosPersona() {
+        nombre = document.getElementById("nombrePersona").value;
+        mail = document.getElementById("mailPersona").value;
+        comentarios = document.getElementById("comentarioPersona").value;
+        alert(`${nombre} ${mail}: ${comentarios}`);
+      }
+    </script>
+    <form>
+      <input type="text" id="nombrePersona" />
+      <input type="text" id="mailPersona" />
+      <textarea id="comentarioPersona"></textarea>
+      <input
+        type="button"
+        value="Mostrar datos"
+        onClick="mostrarDatosPersona()"
+      />
+    </form>
+    <!--Eventos onFocus y onBlur-->
+    <script>
+      function verificarContraseñaUsuario(input) {
+        contrasena = input.value;
+        if (contrasena.length < 7 || contrasena.length > 20)
+          alert("La contraseña debe de ser entre 7 y 20 carácteres");
+      }
+    </script>
+    <form>
+      <input type="text" id="nombreUsuario" />
+      <input
+        type="password"
+        id="passwordUsuario"
+        onblur="verificarContraseñaUsuario(this)"
+      />
+    </form>
+    <br />
+    <!--Eventos onMouseOver y onMouseOut-->
+    <script>
+      function pintarColumna(objeto, col) {
+        objeto.style.backgroundColor = col;
+      }
+    </script>
+    <table border="1">
+      <tr>
+        <td
+          onMouseOver="pintarColumna(this,'#ff0000')"
+          onMouseOut="pintarColumna(this,'#ffffff')"
+        >
+          <a href="http://www.gmail.com">Gmail</a>
+        </td>
+        <td
+          onMouseOver="pintarColumna(this,'#0000ff')"
+          onMouseOut="pintarColumna(this,'#ffffff')"
+        >
+          <a href="http://www.hotmail.com">Hotmail</a>
+        </td>
+        <td
+          onMouseOver="pintarColumna(this,'#00ff00')"
+          onMouseOut="pintarColumna(this,'#ffffff')"
+        >
+          <a href="http://www.yahoo.com">Yahoo</a>
+        </td>
+      </tr>
+    </table>
+    <br />
+    <!--El objeto window-->
+    <script>
+      function abrirNuevaVentana() {
+        window.open("", "", "width=600,height=300");
+      }
+    </script>
+    <input
+      type="button"
+      onclick="abrirNuevaVentana()"
+      value="Abrir nueva ventana"
+    />
+    <br />
+    <!--Propiedad location del objeto window-->
+    <script>
+      function redireccionAleatoria() {
+        numero = Math.floor(Math.random() * 3);
+        console.log(numero);
+        if (numero === 0) {
+          window.location = "https://www.outlook.com";
+        } else if (numero === 1) {
+          window.location = "https://www.gmail.com";
+        } else if (numero === 2) {
+          window.location = "https://www.yahoo.com";
+        }
+      }
+    </script>
+    <input type="button" value="Redirigir" onclick="redireccionAleatoria()" />
+    <br />
+    <!--Propiedad screen del objeto window-->
+    <script>
+      function mostrarVentanaMitadAltura() {
+        ancho = window.screen.width;
+        alto = window.screen.height / 2;
+        window.open("", "", `height=${alto},width=${ancho}`);
+      }
+    </script>
+    <input
+      type="button"
+      value="Abrir nueva ventana"
+      onclick="mostrarVentanaMitadAltura()"
+    />
+  </body>
 </html>
